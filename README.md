@@ -4,7 +4,7 @@
 
 - Clone the repository
 
-        `git clone https://github.com/mdmarufsarker/send-email.git`
+        git clone https://github.com/mdmarufsarker/send-email.git
 
 - Create a .env file `touch .env` and paste those line with your data
 
@@ -22,8 +22,8 @@
 
 ```
 {
-  "to": "",
-  "from": "",
+  "to": "friend's email",
+  "from": "your email",
   "subject": "Learning Nodemailer",
   "body": "I am learner full stack technologies."
 }
