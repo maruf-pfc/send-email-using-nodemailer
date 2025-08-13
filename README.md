@@ -1,41 +1,102 @@
-# Nodemailer
+# Nodemailer Email Sender API
 
-## Steps
+This project is a simple yet powerful Node.js and Express application that allows you to send emails directly from a server using the **Nodemailer** library.
 
-- Clone the repository
+The application requires a connection to a MongoDB database and uses a Gmail account with an **App Password** for authentication.
 
-        git clone https://github.com/mdmarufsarker/send-email.git
+## ✨ Tech Stack
 
-- Create a .env file `touch .env` and paste those line with your data
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB with Mongoose
+- **Emailing:** Nodemailer
+- **Environment Variables:** Dotenv
+- **Live Reloading:** Nodemon
 
-        PORT=7777
-        pass=<your password>
-        COMPASS="mongodb://localhost:27017/nodemailer"
+## 🚀 Getting Started
 
-- The password field can be found if you turned on two step verification on your google account. Then go to security settings then click app password. Then select gmail and your operating system and boom 🔥 you are good to go.
-- Copy the password and paste it into the .env file pass field.
-- Make sure you start the mongodb server
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-        systemctl start mongodb
+### Prerequisites
 
-- Now open postman or Thunder Client for send mail. Must select the body menu then json.
+Make sure you have the following software installed on your system:
 
+- [Node.js](https://nodejs.org/en/) (v14 or higher is recommended)
+- [MongoDB](https://www.mongodb.com/try/download/community) (Make sure the MongoDB server is running)
+
+### 1\. Clone the Repository
+
+First, clone the project from GitHub to your local machine.
+
+```sh
+git clone https://github.com/maruf-pfc/send-email-using-nodemailer.git
+cd send-email-using-nodemailer
 ```
+
+### 2\. Install Dependencies
+
+Install all the required npm packages listed in `package.json`.
+
+```sh
+npm install
+```
+
+### 3\. Configure Environment Variables
+
+Create a `.env` file in the root of the project directory.
+
+```sh
+touch .env
+```
+
+Now, open the `.env` file and add the following configuration. Replace the placeholder values with your actual data.
+
+```env
+PORT=7777
+COMPASS="mongodb://localhost:27017/nodemailer"
+pass=<YOUR_GMAIL_APP_PASSWORD>
+```
+
+### 4\. Get Your Gmail App Password
+
+To use Gmail with Nodemailer, you need to enable 2-Step Verification on your Google Account and generate an **App Password**.
+
+1. Go to your [Google Account](https://myaccount.google.com/).
+2. Navigate to the **Security** tab.
+3. Under "Signing in to Google," make sure **2-Step Verification** is turned **On**.
+4. Click on **App passwords**. You may need to sign in again.
+5. At the bottom, click **Select app** and choose **Mail**.
+6. Click **Select device** and choose your operating system (e.g., _Windows Computer_).
+7. Click **Generate**.
+8. Google will provide a 16-character password. **Copy this password** and paste it as the value for the `pass` variable in your `.env` file.
+
+> 🔥 **Important:** Do not use your regular Google account password. You must use the generated App Password.
+
+### 5\. Start the Server
+
+Once your `.env` file is configured, you can start the application.
+
+```sh
+npm start
+```
+
+The server will start on the port you defined (e.g., `http://localhost:7777`).
+
+## ✉️ How to Use
+
+You can send an email by making a `POST` request to the `/sendemail` endpoint. Use an API client like [Postman](https://www.postman.com/) or Thunder Client.
+
+- **Endpoint:** `POST /sendemail`
+- **Body Type:** `JSON`
+
+### Example Request Body
+
+```json
 {
-  "to": "friend's email",
-  "from": "your email",
+  "to": "friend@example.com",
+  "from": "your-email@gmail.com",
   "subject": "Learning Nodemailer",
-  "body": "I am learner full stack technologies."
+  "body": "This is a test email sent from my Node.js application! I am learning full stack technologies."
 }
 ```
 
-### Follow me for more updates
-
-[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://www.youtube.com/c/MdMarufSarkerOfficial)
-[![Behance](https://img.shields.io/badge/Behance-1769ff?logo=behance&logoColor=white)](https://behance.net/mdmarufsarker)
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/mdmarufsarkerr)
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/md_maruf_sarker)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/mdmarufsarker)
-[![Pinterest](https://img.shields.io/badge/Pinterest-%23E60023.svg?logo=Pinterest&logoColor=white)](https://pinterest.com/md_maruf_sarker)
-[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/md_marufsarker)
-
+If the request is successful, the email will be sent to the recipient's inbox.
